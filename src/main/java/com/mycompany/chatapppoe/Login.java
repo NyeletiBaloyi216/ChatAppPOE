@@ -20,6 +20,25 @@ class Login {
     String CellPhoneNumber;
     String FirstName;
     String LastName;
+    
+    // Creating method to check FirstName
+    boolean checkFirstName(String FirstName){
+        if(FirstName.length()>= 4){
+            return true;
+        }else{
+            System.out.println("FirstName must contain at least 4 characters");
+            return false;
+        }       
+    }
+    // Creating method to checkLastName
+    boolean checkLastName(String LastName){
+        if(LastName.length()>=4){
+            return true;
+        }else{
+            System.out.println("LastName must contain at least 4 characters");
+            return false;
+        }
+    }
         //Creating a non-void method to check UserName validation
     boolean checkUserName(String UserName){
         //LETI_
@@ -85,33 +104,55 @@ class Login {
         //nextDouble() is used to read a double from the Scanner object
         //nextLine is used  for string
         
+        //FirstName
+        System.out.println("Enter FirstName:");
+        FirstName = input.nextLine();
+        while(!checkFirstName(FirstName)){
+            System.out.println("Re-Enter FirstName");
+            FirstName=input.nextLine();
+        }
+        //LastName
+        System.out.println("Enter LastName");
+        LastName=input.nextLine();
+        while(!checkLastName(LastName)){
+            System.out.println("Re-Enter LastName");
+            LastName= input.nextLine();
+        }
+                // UserName    
         System.out.println("Enter UserName:");
         UserName= input.nextLine();
+        while(!checkUserName(UserName)){
+            System.out.println("Re-Enter UserName:");
+            UserName= input.nextLine();
+        }
         
-                
+           // password     
         System.out.println("Enter Password:");
         Password =input.nextLine();
+        while(!checkPassword(Password)){
+            System.out.println("Re-Enter Password");
+            Password= input.nextLine();
+        }
+          //CELLPHONE NUMBER  
         
         System.out.println("Enter CellPhoneNumber:");
-        CellPhoneNumber = input.nextLine();
-
-        
-        
+        CellPhoneNumber = input.nextLine();      
         while(!checkCellPhoneNumber(CellPhoneNumber)){
             System.out.println("CellPhone Number incorectly formatted or does not contain international code");
             System.out.println("Re-enter CellPhoneNumber");
             CellPhoneNumber=input.nextLine();
         }
-            // proceed if registration is succesful
-          
-        if(UserName == null){
-            System.out.println("no User registerd yet");
-            return;
-        }
-        int attempts=3;
-        boolean success=false;
-        
-        System.out.println("\n====LOGIN====");
+            // Welcome message
+            System.out.println("\nRegistration successful!");
+            System.out.println("Welcome"+FirstName+""+LastName);
+    }
+    // login method
+    void loginuser(){
+        Scanner input = new Scanner(System.in);
+        int attempts = 3;
+        boolean success= false;
+            
+                  System.out.println("\n====LOGIN====");
         
         while(attempts>0 && !success){
             
@@ -128,7 +169,7 @@ class Login {
                 success = true;
             }else{
                 attempts--;
-                System.out.println("Login failed.attempts left:"+attempts);
+                System.out.println("Login failed.attempts left:"+ attempts);
             }
         
              
@@ -141,8 +182,8 @@ class Login {
                 System.out.println("Account locked ");
             }
     }
-   
+}
             
-    }
-    
+
+        
 
